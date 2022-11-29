@@ -209,18 +209,36 @@ if __name__ == '__main__':
     # Leave time at the start to initialize
     client.stop(1.0)
 
-    #
-    # FIXME: Insert move commands here...
-    # - take off and hover (with zero yaw)
+    # Turn lights on and off
 
-    client.move(0.0, 0.0, 0.15, 0.0, 1.0)
-    client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
-    client.move(0.0, 0.0, 0.5, 0.0, 1.0)
-    client.move_smooth([0.0, 0.0, 0.5], [0.0, 0.0, 0.15], 0.0, 0.2)
-    client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+    # Controlling the color LEDs (Discussion Forum https://forum.bitcraze.io/viewtopic.php?t=2934)
+    # Set solid color effect
+    client.cf.param.set_value('ring.effect', '7') # There are 0, 1, ... 18 modes of operation
+    # Set the RGB values
+    client.cf.param.set_value('ring.solidRed', '50') # 100 max 
+    client.cf.param.set_value('ring.solidGreen', '0')
+    client.cf.param.set_value('ring.solidBlue', '0')
+    time.sleep(2)
 
-    # Land
-    client.stop(1.0)
+    # Controlling the headlights (Discussion Forum https://forum.bitcraze.io/viewtopic.php?t=1627)
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
+    time.sleep(2)
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on 
+    time.sleep(2)
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off 
+    time.sleep(2)
+
+    # # Insert move commands here...
+    # # - take off and hover (with zero yaw)
+
+    # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+    # client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
+    # client.move(0.0, 0.0, 0.5, 0.0, 1.0)
+    # client.move_smooth([0.0, 0.0, 0.5], [0.0, 0.0, 0.15], 0.0, 0.2)
+    # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+
+    # # Land
+    # client.stop(1.0)
 
     # Disconnect from drone
     client.disconnect()
