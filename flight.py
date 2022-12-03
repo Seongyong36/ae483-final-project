@@ -8,7 +8,7 @@ from cflib.crazyflie.log import LogConfig
 
 # Specify the uri of the drone to which we want to connect (if your radio
 # channel is X, the uri should be 'radio://0/X/2M/E7E7E7E7E7')
-uri = 'radio://0/24/2M/E7E7E7E7E7' # <-- FIXME # 24 for SSSH and 48 for NAAG
+uri = 'radio://0/48/2M/E7E7E7E7E7' # <-- FIXME # 24 for SSSH and 48 for NAAG
 
 # Specify the variables we want to log (all at 100 Hz)
 variables = [
@@ -481,11 +481,7 @@ if __name__ == '__main__':
 
     #letter_move('A')
 
-    client.move_smooth([0.0, 0.0, 0.5], [0.0, 0.0, 0.15], 0.0, 0.2)
-    client.move(0.0, 0.0, 0.15, 0.0, 1.0)
-    print('goodbye world')
-
-    name_string = "NOOR" # input string <-- FIXME
+    name_string = "NO" # input string <-- FIXME
 
     #convert string to list of characters
     input_list = list(name_string)
@@ -504,10 +500,13 @@ if __name__ == '__main__':
         client.move(iterator, 0, 0.5, 0,2.0)
 
     # Land
+    client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, 0.2)
+    client.move(iterator, 0.0, 0.15, 0.0, 1.0)
+    print('goodbye world')
     client.stop(1.0)
 
     # Disconnect from drone
     client.disconnect()
 
     # Write data from flight
-    client.write_data('A_data.json')
+    client.write_data('N_data.json')
