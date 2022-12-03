@@ -203,7 +203,8 @@ if __name__ == '__main__':
     client = SimpleClient(uri, use_controller=False, use_observer=False) # <-- FIXME
     while not client.is_fully_connected:
         time.sleep(0.1)
-    # Allows the Kalman Filter to be used in the state estimation
+    
+    # [added for using the lighthouse] Allows the Kalman Filter to be used in the state estimation
     client.cf.param.set_value('stabilizer.estimator', 2)
 
     # Leave time at the start to initialize

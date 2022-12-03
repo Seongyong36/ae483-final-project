@@ -8,7 +8,7 @@ from cflib.crazyflie.log import LogConfig
 
 # Specify the uri of the drone to which we want to connect (if your radio
 # channel is X, the uri should be 'radio://0/X/2M/E7E7E7E7E7')
-uri = 'radio://0/48/2M/E7E7E7E7E7' # <-- FIXME # 24 for SSSH and 48 for NAAG
+uri = 'radio://0/24/2M/E7E7E7E7E7' # <-- FIXME # 24 for SSSH and 48 for NAAG
 
 # Specify the variables we want to log (all at 100 Hz)
 variables = [
@@ -464,22 +464,19 @@ if __name__ == '__main__':
     while not client.is_fully_connected:
         time.sleep(0.1)
 
-    # Allows the Kalman Filter to be used in the state estimation
+    # [added for using the lighthouse] Allows the Kalman Filter to be used in the state estimation
     client.cf.param.set_value('stabilizer.estimator', 2)
 
     # Leave time at the start to initialize
     client.stop(1.0)
 
-    #
-    # # FIXME: Insert move commands here...
+    # # Insert move commands here...
     print('hello world')
 
     # - take off and hover (with zero yaw)
-    client.move(0.0, 0.0, 0.15, 0.0, 1.0)
-    client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
-    client.move(0.0, 0.0, 0.5, 0.0, 1.0)
-
-    #letter_move('A')
+    # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+    # client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
+    # client.move(0.0, 0.0, 0.5, 0.0, 1.0)
 
     name_string = "NO" # input string <-- FIXME
 
