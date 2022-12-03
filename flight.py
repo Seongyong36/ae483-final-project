@@ -193,15 +193,22 @@ class SimpleClient:
             json.dump(self.data, outfile, indent=4, sort_keys=False)
 
 
-def letter_move(char, x_pos):
+def letter_move(char, x_pos, x_dim, z_dim):
   # convert letter to uppercase
   char = char.upper()
 
   # define some universal parameters
   yaw = 0.0
-  speed = 2.0
-  box_dims = 0.5
+  # speed = 2.0
   dt = 0.2
+
+  # define some location parameters
+  # x_left = x_pos
+  # x_mid = 0.5*x_dim + x_pos
+  # x_right = x_dim + x_pos
+  # z_low = 0.5
+  # z_mid = 0.5*z_dim + z_low
+  # z_hi = z_dim + z_low
 
   if(char == 'A'):
     client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
@@ -264,15 +271,15 @@ def letter_move(char, x_pos):
     client.move_smooth([0.0+x_pos, 0.0, 0.75], [0.5+x_pos, 0.0, 0.5 ], yaw, dt) #lr corner
 
   if(char == 'G'):
-    client.move_smooth([0.0+x_pos,  0.0, 0.5 ], [0.5+x_pos,  0.0, 1.0 ], yaw, dt)
+    client.move_smooth([0.0 +x_pos, 0.0, 0.5 ], [0.5 +x_pos, 0.0, 1.0 ], yaw, dt)
     client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
-    client.move_smooth([0.5+x_pos,  0.0, 1.0 ], [0.0+x_pos,  0.0, 1.0 ], yaw, dt)
-    client.move_smooth([0.0+x_pos,  0.0, 1.0 ], [0.0+x_pos,  0.0, 0.5 ], yaw, dt)
-    client.move_smooth([0.0+x_pos,  0.0, 0.5 ], [0.5+x_pos,  0.0, 0.5 ], yaw, dt)
-    client.move_smooth([0.5+x_pos,  0.0, 0.5 ], [0.5+x_pos,  0.0, 0.75], yaw, dt)
-    client.move_smooth([0.5+x_pos,  0.0, 0.75], [0.25+x_pos, 0.0, 0.75], yaw, dt)
+    client.move_smooth([0.5 +x_pos, 0.0, 1.0 ], [0.0 +x_pos, 0.0, 1.0 ], yaw, dt)
+    client.move_smooth([0.0 +x_pos, 0.0, 1.0 ], [0.0 +x_pos, 0.0, 0.5 ], yaw, dt)
+    client.move_smooth([0.0 +x_pos, 0.0, 0.5 ], [0.5 +x_pos, 0.0, 0.5 ], yaw, dt)
+    client.move_smooth([0.5 +x_pos, 0.0, 0.5 ], [0.5 +x_pos, 0.0, 0.75], yaw, dt)
+    client.move_smooth([0.5 +x_pos, 0.0, 0.75], [0.25+x_pos, 0.0, 0.75], yaw, dt)
     client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
-    client.move_smooth([0.25+x_pos, 0.0, 0.75], [0.5+x_pos,  0.0, 0.5 ], yaw, dt) #lr corner
+    client.move_smooth([0.25+x_pos, 0.0, 0.75], [0.5 +x_pos, 0.0, 0.5 ], yaw, dt) #lr corner
 
   if(char == 'H'):
     client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
@@ -285,22 +292,22 @@ def letter_move(char, x_pos):
 
   if(char == 'I'):
     client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
-    client.move_smooth([0.0+x_pos,  0.0, 0.5], [0.5+x_pos,  0.0, 0.5], yaw, dt)
-    client.move_smooth([0.5+x_pos,  0.0, 0.5], [0.25+x_pos, 0.0, 0.5], yaw, dt)
+    client.move_smooth([0.0 +x_pos, 0.0, 0.5], [0.5 +x_pos, 0.0, 0.5], yaw, dt)
+    client.move_smooth([0.5 +x_pos, 0.0, 0.5], [0.25+x_pos, 0.0, 0.5], yaw, dt)
     client.move_smooth([0.25+x_pos, 0.0, 0.5], [0.25+x_pos, 0.0, 1.0], yaw, dt)
-    client.move_smooth([0.25+x_pos, 0.0, 1.0], [0.0+x_pos,  0.0, 1.0], yaw, dt)
-    client.move_smooth([0.0+x_pos,  0.0, 1.0], [0.5+x_pos,  0.0, 1.0], yaw, dt)
+    client.move_smooth([0.25+x_pos, 0.0, 1.0], [0.0 +x_pos, 0.0, 1.0], yaw, dt)
+    client.move_smooth([0.0 +x_pos, 0.0, 1.0], [0.5 +x_pos, 0.0, 1.0], yaw, dt)
     client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
-    client.move_smooth([0.5+x_pos,  0.0, 1.0], [0.5+x_pos,  0.0, 0.5], yaw, dt) #lr corner
+    client.move_smooth([0.5 +x_pos, 0.0, 1.0], [0.5 +x_pos, 0.0, 0.5], yaw, dt) #lr corner
 
   if(char == 'J'):
     client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
-    client.move_smooth([0.0+x_pos,  0.0, 0.5], [0.25+x_pos, 0.0, 0.5], yaw, dt)
+    client.move_smooth([0.0 +x_pos, 0.0, 0.5], [0.25+x_pos, 0.0, 0.5], yaw, dt)
     client.move_smooth([0.25+x_pos, 0.0, 0.5], [0.25+x_pos, 0.0, 1.0], yaw, dt)
-    client.move_smooth([0.25+x_pos, 0.0, 1.0], [0.0+x_pos,  0.0, 1.0], yaw, dt)
-    client.move_smooth([0.0+x_pos,  0.0, 1.0], [0.5+x_pos,  0.0, 1.0], yaw, dt)
+    client.move_smooth([0.25+x_pos, 0.0, 1.0], [0.0 +x_pos, 0.0, 1.0], yaw, dt)
+    client.move_smooth([0.0 +x_pos, 0.0, 1.0], [0.5 +x_pos, 0.0, 1.0], yaw, dt)
     client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
-    client.move_smooth([0.5+x_pos,  0.0, 1.0], [0.5+x_pos,  0.0, 0.5], yaw, dt) #lr corner
+    client.move_smooth([0.5 +x_pos, 0.0, 1.0], [0.5 +x_pos, 0.0, 0.5], yaw, dt) #lr corner
 
   if(char == 'K'):
     client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
@@ -321,10 +328,10 @@ def letter_move(char, x_pos):
 
   if(char == 'M'):
     client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
-    client.move_smooth([0.0+x_pos,  0.0, 0.5], [0.0+x_pos,  0.0, 1.0], yaw, dt)
-    client.move_smooth([0.0+x_pos,  0.0, 1.0], [0.25+x_pos, 0.0, 0.5], yaw, dt)
-    client.move_smooth([0.25+x_pos, 0.0, 0.5], [0.5+x_pos,  0.0, 1.0], yaw, dt)
-    client.move_smooth([0.5+x_pos,  0.0, 1.0], [0.5+x_pos,  0.0, 0.5], yaw, dt) #lr corner
+    client.move_smooth([0.0 +x_pos, 0.0, 0.5], [0.0 +x_pos, 0.0, 1.0], yaw, dt)
+    client.move_smooth([0.0 +x_pos, 0.0, 1.0], [0.25+x_pos, 0.0, 0.5], yaw, dt)
+    client.move_smooth([0.25+x_pos, 0.0, 0.5], [0.5 +x_pos, 0.0, 1.0], yaw, dt)
+    client.move_smooth([0.5 +x_pos, 0.0, 1.0], [0.5 +x_pos, 0.0, 0.5], yaw, dt) #lr corner
     client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
 
   if(char == 'N'):
@@ -345,18 +352,26 @@ def letter_move(char, x_pos):
     client.move_smooth([0.0+x_pos, 0.0, 0.5], [0.5+x_pos, 0.0, 0.5], yaw, dt) #lr corner
   
   if(char == 'P'):
-    client.move(0+x_pos, 0, 0.5,yaw,speed) 
-    client.move(0+x_pos,0,1,yaw,speed)
-    client.move(0+2*x_pos,0,1,yaw,speed)
-    client.move(0+2*x_pos,0,0.75,yaw,speed)
-    client.move(0+x_pos,0,0.75,yaw,speed)
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.0+x_pos, 0.0, 0.5 ], [0.0+x_pos, 0.0, 1.0 ], yaw, dt)
+    client.move_smooth([0.0+x_pos, 0.0, 1.0 ], [0.5+x_pos, 0.0, 1.0 ], yaw, dt)
+    client.move_smooth([0.5+x_pos, 0.0, 1.0 ], [0.5+x_pos, 0.0, 0.75], yaw, dt)
+    client.move_smooth([0.5+x_pos, 0.0, 0.75], [0.0+x_pos, 0.0, 0.75], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
+    client.move_smooth([0.0+x_pos, 0.0, 0.75], [0.5+x_pos, 0.0, 0.5 ], yaw, dt) #lr corner
   
-  if(char == 'Q'): #needs to be fixed
-    client.move(0+x_pos, 0, 0.5,yaw,speed) 
-    client.move(0+x_pos,0,1,yaw,speed)
-    client.move(0+2*x_pos,0,1,yaw,speed)
-    client.move(0+2*x_pos,0,0.75,yaw,speed)
-    client.move(0+x_pos,0,0.75,yaw,speed)
+  if(char == 'Q'):
+    client.move_smooth([0.0+x_pos, 0.0, 0.5], [0.0+x_pos, 0.0, 0.6], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.0+x_pos, 0.0, 0.6], [0.0+x_pos, 0.0, 1.0], yaw, dt)
+    client.move_smooth([0.0+x_pos, 0.0, 1.0], [0.4+x_pos, 0.0, 1.0], yaw, dt)
+    client.move_smooth([0.4+x_pos, 0.0, 1.0], [0.4+x_pos, 0.0, 0.6], yaw, dt)
+    client.move_smooth([0.4+x_pos, 0.0, 0.6], [0.0+x_pos, 0.0, 0.6], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
+    client.move_smooth([0.0+x_pos, 0.0, 0.6], [0.2+x_pos, 0.0, 0.8], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.2+x_pos, 0.0, 0.8], [0.5+x_pos, 0.0, 0.5], yaw, dt) #lr corner
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
   
   if(char == 'R'):
     client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
@@ -368,54 +383,76 @@ def letter_move(char, x_pos):
     client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
   
   if(char == 'S'):
-    client.move(0+x_pos, 0, 0.5,yaw,speed) 
-    client.move(0+2*x_pos,0,0.5,yaw,speed)
-    client.move(0+2*x_pos,0,0.75,yaw,speed)
-    client.move(0+x_pos,0,0.75,yaw,speed)
-    client.move(0+x_pos,0,1,yaw,speed)
-    client.move(0+2*x_pos,0,1,yaw,speed)
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.0+x_pos, 0.0, 0.5 ], [0.5+x_pos, 0.0, 0.5 ], yaw, dt)
+    client.move_smooth([0.5+x_pos, 0.0, 0.5 ], [0.5+x_pos, 0.0, 0.75], yaw, dt)
+    client.move_smooth([0.5+x_pos, 0.0, 0.75], [0.0+x_pos, 0.0, 0.75], yaw, dt)
+    client.move_smooth([0.0+x_pos, 0.0, 0.75], [0.0+x_pos, 0.0, 1.0 ], yaw, dt)
+    client.move_smooth([0.0+x_pos, 0.0, 1.0 ], [0.5+x_pos, 0.0, 1.0 ], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
+    client.move_smooth([0.5+x_pos, 0.0, 1.0 ], [0.5+x_pos, 0.0, 0.5 ], yaw, dt) #lr corner
   
   if(char == 'T'):
-    client.move(0+x_pos, 0, 1,yaw,speed) 
-    client.move(0+2*x_pos,0,1,yaw,speed)
-    client.move(0+1.5*x_pos,0,1,yaw,speed)
-    client.move(0+1.5*x_pos,0,0.5,yaw,speed)
+    client.move_smooth([0.0 +x_pos, 0.0, 0.5], [0.0 +x_pos, 0.0, 1.0], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.0 +x_pos, 0.0, 1.0], [0.5 +x_pos, 0.0, 1.0], yaw, dt)
+    client.move_smooth([0.5 +x_pos, 0.0, 1.0], [0.25+x_pos, 0.0, 1.0], yaw, dt)
+    client.move_smooth([0.25+x_pos, 0.0, 1.0], [0.25+x_pos, 0.0, 0.5], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
+    client.move_smooth([0.25+x_pos, 0.0, 0.5], [0.5 +x_pos, 0.0, 0.5], yaw, dt) #lr corner
   
   if(char == 'U'):
-    client.move(0+x_pos, 0, 1,yaw,speed) 
-    client.move(0+2*x_pos,0,0.5,yaw,speed)
-    client.move(0+2*x_pos,0,0.5,yaw,speed)
-    client.move(0+2*x_pos,0,1,yaw,speed)
+    client.move_smooth([0.0+x_pos, 0.0, 0.5], [0.0+x_pos, 0.0, 1.0], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.0+x_pos, 0.0, 1.0], [0.0+x_pos, 0.0, 0.5], yaw, dt)
+    client.move_smooth([0.0+x_pos, 0.0, 0.5], [0.5+x_pos, 0.0, 0.5], yaw, dt)
+    client.move_smooth([0.5+x_pos, 0.0, 0.5], [0.5+x_pos, 0.0, 1.0], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
+    client.move_smooth([0.5+x_pos, 0.0, 1.0], [0.5+x_pos, 0.0, 0.5], yaw, dt) #lr corner
   
   if(char == 'V'):
-    client.move(0+x_pos, 0, 1,yaw,speed) 
-    client.move(0+1.5*x_pos,0,0.5,yaw,speed)
-    client.move(0+2*x_pos,0,1,yaw,speed)
+    client.move_smooth([0.0 +x_pos, 0.0, 0.5], [0.0 +x_pos, 0.0, 1.0], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.0 +x_pos, 0.0, 1.0], [0.25+x_pos, 0.0, 0.5], yaw, dt)
+    client.move_smooth([0.25+x_pos, 0.0, 0.5], [0.5 +x_pos, 0.0, 1.0], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
+    client.move_smooth([0.5 +x_pos, 0.0, 1.0], [0.5 +x_pos, 0.0, 0.5], yaw, dt) #lr corner
   
   if(char == 'W'):
-    client.move(0+x_pos, 0, 1,yaw,speed) 
-    client.move(0+1.25*x_pos,0,0.5,yaw,speed)
-    client.move(0+1.5*x_pos,0,0.75,yaw,speed)
-    client.move(0+1.75*x_pos,0,0.5,yaw,speed)
-    client.move(0+2*x_pos,0,1,yaw,speed)
+    client.move_smooth([0.0  +x_pos, 0.0, 0.5], [0.0  +x_pos, 0.0, 1.0], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.0  +x_pos, 0.0, 1.0], [0.125+x_pos, 0.0, 0.5], yaw, dt)
+    client.move_smooth([0.125+x_pos, 0.0, 0.5], [0.5  +x_pos, 0.0, 1.0], yaw, dt)
+    client.move_smooth([0.5  +x_pos, 0.0, 1.0], [0.375+x_pos, 0.0, 0.5], yaw, dt)
+    client.move_smooth([0.375+x_pos, 0.0, 0.5], [0.5  +x_pos, 0.0, 1.0], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
+    client.move_smooth([0.5  +x_pos, 0.0, 1.0], [0.5  +x_pos, 0.0, 0.5], yaw, dt) #lr corner
   
   if(char == 'X'):
-    client.move(0+x_pos, 0, 1,yaw,speed) 
-    client.move(0+2*x_pos, 0, 0.5,yaw,speed) 
-    client.move(0+2*x_pos, 0, 1,yaw,speed) 
-    client.move(0+x_pos, 0, 0.5,yaw,speed) 
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.0+x_pos, 0.0, 0.5], [0.5+x_pos, 0.0, 1.0], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
+    client.move_smooth([0.5+x_pos, 0.0, 1.0], [0.0+x_pos, 0.0, 1.0], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.0+x_pos, 0.0, 1.0], [0.5+x_pos, 0.0, 0.5], yaw, dt) #lr corner
   
-  if(char == 'Y'): #fix this
-    client.move(0+x_pos, 0, 1,yaw,speed) 
-    client.move(0+1.5*x_pos, 0, 0.5,yaw,speed) 
-    client.move(0+2*x_pos, 0, 1,yaw,speed) 
-    client.move(0+x_pos, 0, 0.5,yaw,speed) 
+  if(char == 'Y'):
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.0 +x_pos, 0.0, 0.5 ], [0.5 +x_pos, 0.0, 1.0 ], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
+    client.move_smooth([0.5 +x_pos, 0.0, 1.0 ], [0.0 +x_pos, 0.0, 1.0 ], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.0 +x_pos, 0.0, 1.0 ], [0.25+x_pos, 0.0, 0.75], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
+    client.move_smooth([0.25+x_pos, 0.0, 0.75], [0.5 +x_pos, 0.0, 0.5 ], yaw, dt) #lr corner
   
-  if(char == 'Z'): #fix this
-    client.move(0+x_pos, 0, 1,yaw,speed) 
-    client.move(0+1.5*x_pos, 0, 0.5,yaw,speed) 
-    client.move(0+2*x_pos, 0, 1,yaw,speed) 
-    client.move(0+x_pos, 0, 0.5,yaw,speed) 
+  if(char == 'Z'):
+    client.move_smooth([0.0+x_pos, 0.0, 0.5], [0.0+x_pos, 0.0, 1.0], yaw, dt)
+    client.cf.param.set_value('ring.headlightEnable', 1) # Headlights on
+    client.move_smooth([0.0+x_pos, 0.0, 1.0], [0.5+x_pos, 0.0, 1.0], yaw, dt)
+    client.move_smooth([0.5+x_pos, 0.0, 1.0], [0.0+x_pos, 0.0, 0.5], yaw, dt)
+    client.move_smooth([0.0+x_pos, 0.0, 0.5], [0.5+x_pos, 0.0, 0.5], yaw, dt) #lr corner 
+    client.cf.param.set_value('ring.headlightEnable', 0) # Headlights off
 
 if __name__ == '__main__':
     # Initialize everything
@@ -456,10 +493,13 @@ if __name__ == '__main__':
     # define x-distance for each letter
     left_shift = 0.5
 
+    # define z-distance for each letter
+    vertical_shift = 0.5
+
     #start at x = 0
     iterator = 0
     for i in input_list:
-        self.letter_move(i, iterator)
+        letter_move(i, iterator, left_shift, vertical_shift)
         iterator = iterator+left_shift+0.1
         client.move(iterator, 0, 0.5, 0,2.0)
 
