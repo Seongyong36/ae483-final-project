@@ -502,29 +502,35 @@ if __name__ == '__main__':
     input_list = list(name_string)
 
     # define x-distance for each letter
-    left_shift = 0.25
+    left_shift = 0.30
 
     # define z-distance for each letter
-    vertical_shift = 0.25
+    vertical_shift = 0.30
 
-    #start at x = 0
-    iterator = 0
-    #Land
-    client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, 0.2)
+    #start at x = starting_position
+    starting_position = -1*left_shift * len(name_string) / 2 # in m
+    iterator = starting_position # or just 0 
+    
+    drone_speed = 0.1 # in m/s
+
+    # take off from origin and move to starting position 
+    client.move_smooth([0, 0.0, 0.10], [iterator, 0.0, 0.30], 0.0, drone_speed)
 
     for i in input_list:
         letter_move(i, iterator, left_shift, vertical_shift)
         iterator = iterator+left_shift+0.1
         client.move(iterator, 0, 0.5, 0,2.0)
 
-    #Land
-    client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, 0.2)
-    client.move(iterator, 0.0, 0.15, 0.0, 1.0)
+    #Return to origin to Land
+    client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, drone_speed)
+    client.move_smooth([iterator, 0.0, 0.15], [0, 0.0, 0.15], 0.0, drone_speed)
     print('goodbye world')
+    
+    # Pause for a second
     client.stop(1.0)
 
     # Disconnect from drone
     client.disconnect()
 
     # Write data from flight
-    client.write_data('NOOR_flight1.json')
+    client.write_data('NOOR_flight_3.json')
