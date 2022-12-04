@@ -49,10 +49,14 @@ variables = [
     'ae483log.o_y_des',
     'ae483log.o_z_des',
     # Motor power commands
-    'ae483log.m_1',
-    'ae483log.m_2',
-    'ae483log.m_3',
-    'ae483log.m_4',
+    # 'ae483log.m_1',
+    # 'ae483log.m_2',
+    # 'ae483log.m_3',
+    # 'ae483log.m_4',
+    'motor.m1',
+    'motor.m2',
+    'motor.m3',
+    'motor.m4',
 ]
 
 class SimpleClient:
@@ -474,31 +478,33 @@ if __name__ == '__main__':
     print('hello world')
 
     # - take off and hover (with zero yaw)
-    # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
-    # client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
-    # client.move(0.0, 0.0, 0.5, 0.0, 1.0)
+    client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+    client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
+    client.move(0.0, 0.0, 0.5, 0.0, 10.0)
 
-    name_string = "NO" # input string <-- FIXME
 
-    #convert string to list of characters
-    input_list = list(name_string)
+    # - spell a word
+    # name_string = "NO" # input string <-- FIXME
 
-    # define x-distance for each letter
-    left_shift = 0.5
+    # #convert string to list of characters
+    # input_list = list(name_string)
 
-    # define z-distance for each letter
-    vertical_shift = 0.5
+    # # define x-distance for each letter
+    # left_shift = 0.5
 
-    #start at x = 0
-    iterator = 0
-    for i in input_list:
-        letter_move(i, iterator, left_shift, vertical_shift)
-        iterator = iterator+left_shift+0.1
-        client.move(iterator, 0, 0.5, 0,2.0)
+    # # define z-distance for each letter
+    # vertical_shift = 0.5
+
+    # #start at x = 0
+    # iterator = 0
+    # for i in input_list:
+    #     letter_move(i, iterator, left_shift, vertical_shift)
+    #     iterator = iterator+left_shift+0.1
+    #     client.move(iterator, 0, 0.5, 0,2.0)
 
     # Land
-    client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, 0.2)
-    client.move(iterator, 0.0, 0.15, 0.0, 1.0)
+    # client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, 0.2)
+    # client.move(iterator, 0.0, 0.15, 0.0, 1.0)
     print('goodbye world')
     client.stop(1.0)
 
@@ -506,4 +512,4 @@ if __name__ == '__main__':
     client.disconnect()
 
     # Write data from flight
-    client.write_data('N_data.json')
+    client.write_data('motorCommandHoverData.json')
