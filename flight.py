@@ -464,7 +464,7 @@ if __name__ == '__main__':
     cflib.crtp.init_drivers()
 
     # Create and start the client that will connect to the drone
-    client = SimpleClient(uri, use_controller=False, use_observer=False) # <-- FIXME
+    client = SimpleClient(uri, use_controller=True, use_observer=False) # <-- FIXME
     while not client.is_fully_connected:
         time.sleep(0.1)
 
@@ -477,34 +477,49 @@ if __name__ == '__main__':
     # # Insert move commands here...
     print('hello world')
 
-    # - take off and hover (with zero yaw)
-    client.move(0.0, 0.0, 0.15, 0.0, 1.0)
-    client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
-    client.move(0.0, 0.0, 0.5, 0.0, 10.0)
+    # # - take off and hover (with zero yaw)
+    # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+    # client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
+    # client.move(0.0, 0.0, 0.5, 0.0, 10.0)
 
+    # ## Lab 6 Hover Test vvvvvvvvv
+    # # Take off and hover (with zero yaw)
+    # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+    # client.move(0.0, 0.0, 0.30, 0.0, 1.0)
+    
+    # # Keep hovering (with zero yaw)
+    # client.move(0.0, 0.0, 0.45, 0.0, 11.0)
 
-    # - spell a word
-    # name_string = "NO" # input string <-- FIXME
+    # # Go back to hover (with zero yaw) and prepare to land
+    # client.move(0.0, 0.0, 0.30, 0.0, 1.0)
+    # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+    # ## Lab 6 Hover Test ^^^^^^^^^ 
 
-    # #convert string to list of characters
-    # input_list = list(name_string)
+    ## - FINAL PROJECT: Spell a word
+    name_string = "NOOR" # input string
 
-    # # define x-distance for each letter
-    # left_shift = 0.5
+    #convert string to list of characters
+    input_list = list(name_string)
 
-    # # define z-distance for each letter
-    # vertical_shift = 0.5
+    # define x-distance for each letter
+    left_shift = 0.25
 
-    # #start at x = 0
-    # iterator = 0
-    # for i in input_list:
-    #     letter_move(i, iterator, left_shift, vertical_shift)
-    #     iterator = iterator+left_shift+0.1
-    #     client.move(iterator, 0, 0.5, 0,2.0)
+    # define z-distance for each letter
+    vertical_shift = 0.25
 
-    # Land
-    # client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, 0.2)
-    # client.move(iterator, 0.0, 0.15, 0.0, 1.0)
+    #start at x = 0
+    iterator = 0
+    #Land
+    client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, 0.2)
+
+    for i in input_list:
+        letter_move(i, iterator, left_shift, vertical_shift)
+        iterator = iterator+left_shift+0.1
+        client.move(iterator, 0, 0.5, 0,2.0)
+
+    #Land
+    client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, 0.2)
+    client.move(iterator, 0.0, 0.15, 0.0, 1.0)
     print('goodbye world')
     client.stop(1.0)
 
@@ -512,4 +527,4 @@ if __name__ == '__main__':
     client.disconnect()
 
     # Write data from flight
-    client.write_data('motorCommandHoverData.json')
+    client.write_data('NOOR_flight1.json')
