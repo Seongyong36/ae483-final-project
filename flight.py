@@ -482,45 +482,49 @@ if __name__ == '__main__':
     # client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
     # client.move(0.0, 0.0, 0.5, 0.0, 10.0)
 
-    # ## Lab 6 Hover Test vvvvvvvvv
-    # # Take off and hover (with zero yaw)
-    # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
-    # client.move(0.0, 0.0, 0.30, 0.0, 1.0)
+    ## Lab 6 Hover Test vvvvvvvvv
+    # Take off and hover (with zero yaw)
+    client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+    client.move(0.0, 0.0, 0.30, 0.0, 1.0)
     
-    # # Keep hovering (with zero yaw)
-    # client.move(0.0, 0.0, 0.45, 0.0, 11.0)
+    # Keep hovering (with zero yaw)
+    client.move(0.0, 0.0, 0.45, 0.0, 11.0)
 
-    # # Go back to hover (with zero yaw) and prepare to land
-    # client.move(0.0, 0.0, 0.30, 0.0, 1.0)
-    # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
-    # ## Lab 6 Hover Test ^^^^^^^^^ 
+    # Go back to hover (with zero yaw) and prepare to land
+    client.move(0.0, 0.0, 0.30, 0.0, 1.0)
+    client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+    ## Lab 6 Hover Test ^^^^^^^^^ 
 
-    ## - FINAL PROJECT: Spell a word
-    name_string = "NOOR" # input string
+    # ## - FINAL PROJECT: Spell a word
+    # name_string = "NOOR" # input string
 
-    #convert string to list of characters
-    input_list = list(name_string)
+    # #convert string to list of characters
+    # input_list = list(name_string)
 
-    # define x-distance for each letter
-    left_shift = 0.25
+    # # define x-distance for each letter
+    # left_shift = 0.25
 
-    # define z-distance for each letter
-    vertical_shift = 0.25
+    # # define z-distance for each letter
+    # vertical_shift = 0.25
 
-    #start at x = 0
-    iterator = 0
-    #Land
-    client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, 0.2)
+    # #start at x = 0
+    # iterator = 0
+    # #Land
+    # client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, 0.2)
 
-    for i in input_list:
-        letter_move(i, iterator, left_shift, vertical_shift)
-        iterator = iterator+left_shift+0.1
-        client.move(iterator, 0, 0.5, 0,2.0)
+    # for i in input_list:
+    #     letter_move(i, iterator, left_shift, vertical_shift)
+    #     iterator = iterator+left_shift+0.1
+    #     client.move(iterator, 0, 0.5, 0,2.0)
 
-    #Land
-    client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, 0.2)
-    client.move(iterator, 0.0, 0.15, 0.0, 1.0)
-    print('goodbye world')
+    # #Land
+    # client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, 0.2)
+    # client.move(iterator, 0.0, 0.15, 0.0, 1.0)
+    # print('goodbye world')
+
+    
+    
+    # Pause for a second
     client.stop(1.0)
 
     # Disconnect from drone
