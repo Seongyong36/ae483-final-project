@@ -508,7 +508,7 @@ if __name__ == '__main__':
     vertical_shift = 0.30
 
     #start at x = starting_position
-    starting_position = left_shift * len(name_string) / 2 # in m
+    starting_position = -1*left_shift * len(name_string) / 2 # in m
     iterator = starting_position # or just 0 
     
     drone_speed = 0.1 # in m/s
@@ -533,4 +533,4 @@ if __name__ == '__main__':
     client.disconnect()
 
     # Write data from flight
-    client.write_data('con_test_9.json')
+    client.write_data('NOOR_flight_3.json')
