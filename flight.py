@@ -471,8 +471,8 @@ if __name__ == '__main__':
     while not client.is_fully_connected:
         time.sleep(0.1)
 
-    # 
-    client.cf.param.set_value('Lighthouse.method', 0)
+    # Allows lighthouse.x .y .z to be logged? 
+    client.cf.param.set_value('lighthouse.method', 0)
 
     # [added for using the lighthouse] Allows the Kalman Filter to be used in the state estimation
     client.cf.param.set_value('stabilizer.estimator', 2)
@@ -566,4 +566,4 @@ if __name__ == '__main__':
     client.disconnect()
 
     # Write data from flight
-    client.write_data('lab7_flight3.json')
+    client.write_data('lab7_flight4.json')
