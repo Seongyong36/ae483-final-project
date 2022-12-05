@@ -488,10 +488,10 @@ if __name__ == '__main__':
     # # Insert move commands here...
     print('hello world')
 
-    # # - take off and hover (with zero yaw)
+    # ## - take off and hover (with zero yaw)
     # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
-    # client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
-    # client.move(0.0, 0.0, 0.5, 0.0, 10.0)
+    # client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.30], 0.0, 0.2)
+    # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
 
     # ## Lab 6 Hover Test vvvvvvvvv
     # # Take off and hover (with zero yaw)
@@ -506,7 +506,7 @@ if __name__ == '__main__':
     # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
     # ## Lab 6 Hover Test ^^^^^^^^^ 
 
-    ## Lab 7 Square Test vvvvvvvvvv
+    # Lab 7 Square Test vvvvvvvvvv
     # Take off and hover (with zero yaw)
     client.move(0.0, 0.0, 0.15, 0.0, 1.0)
     client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
@@ -528,7 +528,6 @@ if __name__ == '__main__':
     client.move_smooth([0.0, 0.0, 0.5], [0.0, 0.0, 0.15], 0.0, 0.2)
     client.move(0.0, 0.0, 0.15, 0.0, 1.0)
     print("land")
-    # Land
 
     ## Lab 7 Square Test ^^^^^^^^^^
 
@@ -570,4 +569,4 @@ if __name__ == '__main__':
     client.disconnect()
 
     # Write data from flight
-    client.write_data('lab7_flight4.json')
+    client.write_data('lab7_flight9.json')
