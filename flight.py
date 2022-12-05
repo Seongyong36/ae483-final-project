@@ -40,6 +40,11 @@ variables = [
     'ae483log.n_y',
     'ae483log.r',
     'ae483log.a_z',
+    # lighthouse live measurements that the controller can use 
+    'ae483log.lh_x',
+    'ae483log.lh_y',
+    'ae483log.lh_z',
+    # lighthouse logged data
     'lighthouse.x',
     'lighthouse.y',
     'lighthouse.z',
@@ -504,7 +509,6 @@ if __name__ == '__main__':
     ## Lab 7 Square Test vvvvvvvvvv
     # Take off and hover (with zero yaw)
     client.move(0.0, 0.0, 0.15, 0.0, 1.0)
-    client.move(0.0, 0.0, 0.5, 0.0, 1.0)
     client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
     client.move(0.0, 0.0, 0.5, 0.0, 1.0)
     print("in hover")
