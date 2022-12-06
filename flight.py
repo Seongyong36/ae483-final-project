@@ -594,4 +594,4 @@ if __name__ == '__main__':
     client.disconnect()
 
     # Write data from flight
-    client.write_data('lab8_true_flight_test1.json')
+    client.write_data('lab8_true_flight_test2.json')
