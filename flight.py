@@ -598,4 +598,9 @@ if __name__ == '__main__':
     client.disconnect()
 
     # Write data from flight
-    client.write_data('####.json')
+    # client.write_data('1206_default_everything_hover2.json')
+    # client.write_data('1206_custom_everything_hover1.json')
+    # client.write_data('1206_default_observer_hover5.json')
+    client.write_data('NOOR_flight_4.json')
+    # client.write_data('#####.json')
+    
