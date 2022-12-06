@@ -507,30 +507,30 @@ if __name__ == '__main__':
     # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
     # ## Lab 6 Hover Test ^^^^^^^^^ 
 
-  # ## Lab 7 Square Test vvvvvvvvvv
-    # Take off and hover (with zero yaw)
-    client.move(0.0, 0.0, 0.15, 0.0, 1.0)
-    client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
-    client.move(0.0, 0.0, 0.5, 0.0, 1.0)
-    print("in hover")
+  # # ## Lab 7 Square Test vvvvvvvvvv
+  #   # Take off and hover (with zero yaw)
+  #   client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+  #   client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
+  #   client.move(0.0, 0.0, 0.5, 0.0, 1.0)
+  #   print("in hover")
 
-   # Fly in a square
-    client.move_smooth([0.0, 0.0, 0.5], [0.5, 0.0, 0.5], 0.0, 0.2)
-    client.move(0.5, 0.0, 0.5, 0.0, 1.0)
-    client.move_smooth([0.5, 0.0, 0.5], [0.5, 0.5, 0.5], 0.0, 0.2)
-    client.move(0.5, 0.5, 0.5, 0.0, 1.0)
-    client.move_smooth([0.5, 0.5, 0.5], [0.0, 0.5, 0.5], 0.0, 0.2)
-    client.move(0.0, 0.5, 0.5, 0.0, 1.0)
-    client.move_smooth([0.0, 0.5, 0.5], [0.0, 0.0, 0.5], 0.0, 0.2)
-    print("finished square")
+  #  # Fly in a square
+  #   client.move_smooth([0.0, 0.0, 0.5], [0.5, 0.0, 0.5], 0.0, 0.2)
+  #   client.move(0.5, 0.0, 0.5, 0.0, 1.0)
+  #   client.move_smooth([0.5, 0.0, 0.5], [0.5, 0.5, 0.5], 0.0, 0.2)
+  #   client.move(0.5, 0.5, 0.5, 0.0, 1.0)
+  #   client.move_smooth([0.5, 0.5, 0.5], [0.0, 0.5, 0.5], 0.0, 0.2)
+  #   client.move(0.0, 0.5, 0.5, 0.0, 1.0)
+  #   client.move_smooth([0.0, 0.5, 0.5], [0.0, 0.0, 0.5], 0.0, 0.2)
+  #   print("finished square")
 
-    # Go back to hover (with zero yaw) and prepare to land
-    client.move(0.0, 0.0, 0.5, 0.0, 1.0)
-    client.move_smooth([0.0, 0.0, 0.5], [0.0, 0.0, 0.15], 0.0, 0.2)
-    client.move(0.0, 0.0, 0.15, 0.0, 1.0)
-    print("land")
+  #   # Go back to hover (with zero yaw) and prepare to land
+  #   client.move(0.0, 0.0, 0.5, 0.0, 1.0)
+  #   client.move_smooth([0.0, 0.0, 0.5], [0.0, 0.0, 0.15], 0.0, 0.2)
+  #   client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+  #   print("land")
 
-  #   ## Lab 7 Square Test ^^^^^^^^^^
+  # #   ## Lab 7 Square Test ^^^^^^^^^^
 
 
     # ## Lab 8 Flight Test vvvvvvvvvvvvvvvvv
@@ -557,36 +557,36 @@ if __name__ == '__main__':
 
     # ## Lab 8 Flight Test ^^^^^^^^^^^^^^^^^ 
 
-    # ## - FINAL PROJECT: Spell a word
-    # name_string = "NOOR" # input string
+    ## - FINAL PROJECT: Spell a word
+    name_string = "NOOR" # input string
 
-    # #convert string to list of characters
-    # input_list = list(name_string)
+    #convert string to list of characters
+    input_list = list(name_string)
 
-    # # define x-distance for each letter
-    # left_shift = 0.30
+    # define x-distance for each letter
+    left_shift = 0.30
 
-    # # define z-distance for each letter
-    # vertical_shift = 0.30
+    # define z-distance for each letter
+    vertical_shift = 0.30
 
-    # #start at x = starting_position
-    # starting_position = -1*left_shift * len(name_string) / 2 # in m
-    # iterator = starting_position # or just 0 
+    #start at x = starting_position
+    starting_position = -1*left_shift * len(name_string) / 2 # in m
+    iterator = starting_position # or just 0 
     
-    # drone_speed = 0.1 # in m/s
+    drone_speed = 0.1 # in m/s
 
-    # # take off from origin and move to starting position 
-    # client.move_smooth([0, 0.0, 0.10], [iterator, 0.0, 0.30], 0.0, drone_speed)
+    # take off from origin and move to starting position 
+    client.move_smooth([0, 0.0, 0.10], [iterator, 0.0, 0.30], 0.0, drone_speed)
 
-    # for i in input_list:
-    #     letter_move(i, iterator, left_shift, vertical_shift)
-    #     iterator = iterator+left_shift+0.1
-    #     client.move(iterator, 0, 0.5, 0,2.0)
+    for i in input_list:
+        letter_move(i, iterator, left_shift, vertical_shift)
+        iterator = iterator+left_shift+0.1
+        client.move(iterator, 0, 0.5, 0,2.0)
 
-    # #Return to origin to Land
-    # client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, drone_speed)
-    # client.move_smooth([iterator, 0.0, 0.15], [0, 0.0, 0.15], 0.0, drone_speed)
-    # print('goodbye world')
+    #Return to origin to Land
+    client.move_smooth([iterator, 0.0, 0.5], [iterator, 0.0, 0.15], 0.0, drone_speed)
+    client.move_smooth([iterator, 0.0, 0.15], [0, 0.0, 0.15], 0.0, drone_speed)
+    print('goodbye world')
     
     # Pause for a second
     client.stop(1.0)
@@ -595,4 +595,4 @@ if __name__ == '__main__':
     client.disconnect()
 
     # Write data from flight
-    client.write_data('lab9_square_flight4.json')
+    client.write_data('spell_NOOR1.json')
