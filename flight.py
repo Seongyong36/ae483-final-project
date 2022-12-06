@@ -472,7 +472,7 @@ if __name__ == '__main__':
     cflib.crtp.init_drivers()
 
     # Create and start the client that will connect to the drone
-    client = SimpleClient(uri, use_controller=True, use_observer=False) # <-- FIXME
+    client = SimpleClient(uri, use_controller=True, use_observer=True) # <-- FIXME
     while not client.is_fully_connected:
         time.sleep(0.1)
 
@@ -488,11 +488,12 @@ if __name__ == '__main__':
     # # Insert move commands here...
     print('hello world')
 
-    ## - take off and hover (with zero yaw)
+    # ## - take off and hover (with zero yaw)
     # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
     # #client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.30], 0.0, 1)
     # client.move(0.0, 0.0, 0.30, 0.0, 1.0)
     # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+
     # ## Lab 6 Hover Test vvvvvvvvv
     # # Take off and hover (with zero yaw)
     # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
@@ -506,7 +507,7 @@ if __name__ == '__main__':
     # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
     # ## Lab 6 Hover Test ^^^^^^^^^ 
 
-  #   # Lab 7 Square Test vvvvvvvvvv
+  # ## Lab 7 Square Test vvvvvvvvvv
     # Take off and hover (with zero yaw)
     client.move(0.0, 0.0, 0.15, 0.0, 1.0)
     client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
@@ -594,4 +595,4 @@ if __name__ == '__main__':
     client.disconnect()
 
     # Write data from flight
-    client.write_data('lab9_square_flight2.json')
+    client.write_data('lab9_square_flight4.json')
