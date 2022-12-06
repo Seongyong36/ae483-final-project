@@ -44,10 +44,10 @@ variables = [
     'ae483log.lh_x',
     'ae483log.lh_y',
     'ae483log.lh_z',
-    # lighthouse logged data
-    'lighthouse.x',
-    'lighthouse.y',
-    'lighthouse.z',
+    # # lighthouse logged data
+    # 'lighthouse.x',
+    # 'lighthouse.y',
+    # 'lighthouse.z',
     # Setpoint (default controller)
     'ctrltarget.x',
     'ctrltarget.y',
@@ -506,30 +506,55 @@ if __name__ == '__main__':
     # client.move(0.0, 0.0, 0.15, 0.0, 1.0)
     # ## Lab 6 Hover Test ^^^^^^^^^ 
 
-    # Lab 7 Square Test vvvvvvvvvv
+  #   # Lab 7 Square Test vvvvvvvvvv
+  #   # Take off and hover (with zero yaw)
+  #   client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+  #   client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
+  #   client.move(0.0, 0.0, 0.5, 0.0, 1.0)
+  #   print("in hover")
+
+  #  # Fly in a square
+  #   client.move_smooth([0.0, 0.0, 0.5], [0.5, 0.0, 0.5], 0.0, 0.2)
+  #   client.move(0.5, 0.0, 0.5, 0.0, 1.0)
+  #   client.move_smooth([0.5, 0.0, 0.5], [0.5, 0.5, 0.5], 0.0, 0.2)
+  #   client.move(0.5, 0.5, 0.5, 0.0, 1.0)
+  #   client.move_smooth([0.5, 0.5, 0.5], [0.0, 0.5, 0.5], 0.0, 0.2)
+  #   client.move(0.0, 0.5, 0.5, 0.0, 1.0)
+  #   client.move_smooth([0.0, 0.5, 0.5], [0.0, 0.0, 0.5], 0.0, 0.2)
+  #   print("finished square")
+
+  #   # Go back to hover (with zero yaw) and prepare to land
+  #   client.move(0.0, 0.0, 0.5, 0.0, 1.0)
+  #   client.move_smooth([0.0, 0.0, 0.5], [0.0, 0.0, 0.15], 0.0, 0.2)
+  #   client.move(0.0, 0.0, 0.15, 0.0, 1.0)
+  #   print("land")
+
+  #   ## Lab 7 Square Test ^^^^^^^^^^
+
+
+    ## Lab 8 Flight Test vvvvvvvvvvvvvvvvv
     # Take off and hover (with zero yaw)
     client.move(0.0, 0.0, 0.15, 0.0, 1.0)
     client.move_smooth([0.0, 0.0, 0.15], [0.0, 0.0, 0.5], 0.0, 0.2)
     client.move(0.0, 0.0, 0.5, 0.0, 1.0)
-    print("in hover")
 
-   # Fly in a square
-    client.move_smooth([0.0, 0.0, 0.5], [0.5, 0.0, 0.5], 0.0, 0.2)
-    client.move(0.5, 0.0, 0.5, 0.0, 1.0)
-    client.move_smooth([0.5, 0.0, 0.5], [0.5, 0.5, 0.5], 0.0, 0.2)
-    client.move(0.5, 0.5, 0.5, 0.0, 1.0)
-    client.move_smooth([0.5, 0.5, 0.5], [0.0, 0.5, 0.5], 0.0, 0.2)
-    client.move(0.0, 0.5, 0.5, 0.0, 1.0)
-    client.move_smooth([0.0, 0.5, 0.5], [0.0, 0.0, 0.5], 0.0, 0.2)
-    print("finished square")
-
+    # Fly in a square five times (with a pause at each corner)
+    num_squares = 5
+    for i in range(num_squares):
+        client.move_smooth([0.0, 0.0, 0.5], [0.5, 0.0, 0.5], 0.0, 0.2)
+        client.move(0.5, 0.0, 0.5, 0.0, 1.0)
+        client.move_smooth([0.5, 0.0, 0.5], [0.5, 0.5, 0.5], 0.0, 0.2)
+        client.move(0.5, 0.5, 0.5, 0.0, 1.0)
+        client.move_smooth([0.5, 0.5, 0.5], [0.0, 0.5, 0.5], 0.0, 0.2)
+        client.move(0.0, 0.5, 0.5, 0.0, 1.0)
+        client.move_smooth([0.0, 0.5, 0.5], [0.0, 0.0, 0.5], 0.0, 0.2)
+        client.move(0.0, 0.0, 0.5, 0.0, 1.0)
+    
     # Go back to hover (with zero yaw) and prepare to land
-    client.move(0.0, 0.0, 0.5, 0.0, 1.0)
     client.move_smooth([0.0, 0.0, 0.5], [0.0, 0.0, 0.15], 0.0, 0.2)
     client.move(0.0, 0.0, 0.15, 0.0, 1.0)
-    print("land")
 
-    ## Lab 7 Square Test ^^^^^^^^^^
+    ## Lab 8 Flight Test ^^^^^^^^^^^^^^^^^ 
 
     # ## - FINAL PROJECT: Spell a word
     # name_string = "NOOR" # input string
@@ -569,4 +594,4 @@ if __name__ == '__main__':
     client.disconnect()
 
     # Write data from flight
-    client.write_data('lab7_flight9.json')
+    client.write_data('lab8_true_flight_test1.json')
