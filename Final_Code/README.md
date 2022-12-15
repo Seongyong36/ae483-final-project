@@ -114,4 +114,6 @@ Videos linked in each python notebook, listed here for your convenience:
 [Calibration](https://mediaspace.illinois.edu/media/t/1_v0idzlug)
 
 
-## Other
+## Other:
+### Github Repository:
+[Github](https://github.com/Seongyong36/ae483-final-project)
